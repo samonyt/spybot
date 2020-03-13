@@ -1,7 +1,12 @@
 // Spybot v1
-// By samonyt#0001
+// By Sam#5281
 // Change token, channelID and keywords to your liking
 // Enjoy!
+
+// Configurable Options
+const token = "";
+const keywords = [];
+const channelID = "";
 
 const Discord = require('discord.js')
 const client = new Discord.Client();
@@ -14,8 +19,7 @@ client.on('ready', async() => {
 })
 
 client.on('message', async(msg) => {
-    const ch = client.channels.get('') // Paste your channel ID here!
-    const keywords = [] // for example: ['hi', 'hello', 'bye']
+    const ch = client.channels.get(channelID) // Paste your channel ID here!
     const arr = msg.content.split(' ').map(w => w.toLowerCase()).filter(w => keywords.includes(w));
     if (msg.author.id == client.user.id) return;
     if (msg.content === 0) return;
@@ -36,4 +40,4 @@ client.on('message', async(msg) => {
         ch.send(embed)
     }
 })
-client.login('') // Place your token here
+client.login(token);

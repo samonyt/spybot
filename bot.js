@@ -25,9 +25,9 @@ client.on('message', async(msg) => {
     const ch = client.channels.get(channelID); // set your log channel id between the quotes
     const arr = msg.content.split(' ').map(w => w.toLowerCase()).filter(w => keywords.includes(w)); // copy the message of the peoples
     if (msg.author.id == client.user.id) return; // if the author of the message is the bot, then nothing is done
-    if (msg.content === 0) return; // if the message contains nothing
+    if (msg.content === 0 || msg.content === null) return; // if the message contains nothing
     console.log(`${msg.guild.name} - ${msg.author.tag}: ${msg.content}`); // send in the console the server name, author tag and the content of a message
-    if (arr.length !== 0) { // if the message size is not equal to 0
+    if (arr.length !== 0 || arr.length !== null) { // if the message size is not equal to 0
         
         let embed = new Discord.MessageEmbed(); // create a new embed
         embed.setAuthor(`${msg.author.tag}`, `${msg.author.avatarURL()}`); // set the embed author as the message author tag and embed author avatar as the message author avatar
